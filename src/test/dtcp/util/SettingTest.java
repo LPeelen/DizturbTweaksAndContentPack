@@ -24,8 +24,8 @@ class SettingTest {
 
     @Test
     void withJsonString_whenGetSetting_thenGetValue() {
-        try (MockedStatic<JSONUtil> mockedJSONUtils = Mockito.mockStatic(JSONUtil.class)) {
-            mockedJSONUtils.when(() -> JSONUtil.read(Mockito.anyString())).thenReturn(mockJson);
+        try (MockedStatic<JSONMapper> mockedJSONUtils = Mockito.mockStatic(JSONMapper.class)) {
+            mockedJSONUtils.when(() -> JSONMapper.read(Mockito.anyString())).thenReturn(mockJson);
 
             Setting<String> testSetting = new Setting<>("test", "default");
             Assertions.assertEquals("success", testSetting.get());
@@ -34,8 +34,8 @@ class SettingTest {
 
     @Test
     void withJsonArray_whenGetSetting_thenGetValue() {
-        try (MockedStatic<JSONUtil> mockedJSONUtils = Mockito.mockStatic(JSONUtil.class)) {
-            mockedJSONUtils.when(() -> JSONUtil.read(Mockito.anyString())).thenReturn(mockJson);
+        try (MockedStatic<JSONMapper> mockedJSONUtils = Mockito.mockStatic(JSONMapper.class)) {
+            mockedJSONUtils.when(() -> JSONMapper.read(Mockito.anyString())).thenReturn(mockJson);
 
             Setting<List<Integer>> testSetting = new Setting<>("testArray", new ArrayList<>(), Integer.class);
             int[] resultArray = testSetting.get().stream().mapToInt(Integer::intValue).toArray();
@@ -45,8 +45,8 @@ class SettingTest {
 
     @Test
     void withJsonArrayOfMultipleTypes_whenGetSetting_thenGetDefaultValue() {
-        try (MockedStatic<JSONUtil> mockedJSONUtils = Mockito.mockStatic(JSONUtil.class)) {
-            mockedJSONUtils.when(() -> JSONUtil.read(Mockito.anyString())).thenReturn(mockJson);
+        try (MockedStatic<JSONMapper> mockedJSONUtils = Mockito.mockStatic(JSONMapper.class)) {
+            mockedJSONUtils.when(() -> JSONMapper.read(Mockito.anyString())).thenReturn(mockJson);
 
             int[] expectedArray = new int[]{4, 5, 6};
             List<Integer> defaultList = Arrays.stream(expectedArray).boxed().toList();
@@ -60,8 +60,8 @@ class SettingTest {
 
     @Test
     void withIOException_whenGetSetting_thenGetDefaultValue() {
-        try (MockedStatic<JSONUtil> mockedJSONUtils = Mockito.mockStatic(JSONUtil.class)) {
-            mockedJSONUtils.when(() -> JSONUtil.read(Mockito.anyString())).thenThrow(new IOException("Test IO exception"));
+        try (MockedStatic<JSONMapper> mockedJSONUtils = Mockito.mockStatic(JSONMapper.class)) {
+            mockedJSONUtils.when(() -> JSONMapper.read(Mockito.anyString())).thenThrow(new IOException("Test IO exception"));
 
             Setting<String> testSetting = new Setting<>("test", "default");
             Assertions.assertEquals("default", testSetting.get());
@@ -70,8 +70,8 @@ class SettingTest {
 
     @Test
     void withInvalidJson_whenGetSetting_thenGetDefaultValue() {
-        try (MockedStatic<JSONUtil> mockedJSONUtils = Mockito.mockStatic(JSONUtil.class)) {
-            mockedJSONUtils.when(() -> JSONUtil.read(Mockito.anyString())).thenThrow(new JSONException("Test JSON exception"));
+        try (MockedStatic<JSONMapper> mockedJSONUtils = Mockito.mockStatic(JSONMapper.class)) {
+            mockedJSONUtils.when(() -> JSONMapper.read(Mockito.anyString())).thenThrow(new JSONException("Test JSON exception"));
 
             Setting<String> testSetting = new Setting<>("test", "default");
             Assertions.assertEquals("default", testSetting.get());
@@ -80,8 +80,8 @@ class SettingTest {
 
     @Test
     void withInvalidSetting_whenGetSetting_thenGetDefaultValue() {
-        try (MockedStatic<JSONUtil> mockedJSONUtils = Mockito.mockStatic(JSONUtil.class)) {
-            mockedJSONUtils.when(() -> JSONUtil.read(Mockito.anyString())).thenReturn(mockJson);
+        try (MockedStatic<JSONMapper> mockedJSONUtils = Mockito.mockStatic(JSONMapper.class)) {
+            mockedJSONUtils.when(() -> JSONMapper.read(Mockito.anyString())).thenReturn(mockJson);
 
             Setting<String> testSetting = new Setting<>("invalid", "default");
             Assertions.assertEquals("default", testSetting.get());
