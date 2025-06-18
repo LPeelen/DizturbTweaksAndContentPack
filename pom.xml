@@ -190,7 +190,7 @@
                     <toolchains>
                         <jdk>
                             <version>17</version>
-                            <vendor>azul</vendor>
+                            <vendor>zulu</vendor>
                         </jdk>
                     </toolchains>
                 </configuration>
