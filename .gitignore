@@ -9,6 +9,8 @@
 .run
 *.jar
 !lib/*.jar
+target/
+!target/**.jar
 
 # Gradle and Maven with auto-import
 # When using Gradle or Maven with auto-import, you should exclude module files,
@@ -176,6 +178,3 @@ nbdist/
 .idea/vcs.xml
 
 .idea/csv-editor.xml
-
-# Maven
-target
