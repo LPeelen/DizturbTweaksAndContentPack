@@ -51,7 +51,6 @@ jobs:
           allowUpdates: true
           name: ${{ env.VERSION }}
           tag: ${{ env.VERSION }}
-          bodyFile: changelog.txt
           draft: false
           prerelease: '${{ env.IS_PRERELEASE }}'
           token: ${{ secrets.GITHUB_TOKEN }}
