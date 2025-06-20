@@ -25,6 +25,8 @@ public class Setting<T> {
     private final T defaultValue;
     private final Class<?> memberType;
 
+    private T cache;
+
     /**
      * Constructs a setting for a single primitive or object value (e.g. String, Integer, Boolean).
      *
@@ -51,7 +53,7 @@ public class Setting<T> {
     }
 
     /**
-     * Returns the value of this setting as loaded from the JSON configuration file.
+     * Returns the value of this setting as loaded from the cache or JSON configuration file.
      * <p>
      * If the setting is not found or cannot be parsed (e.g., type mismatch), the default value is returned.
      * For collection settings, each element is checked against {@code memberType}.
@@ -59,6 +61,21 @@ public class Setting<T> {
      * @return the loaded setting value, or the default value on error
      */
     public T get() {
+        if (cache != null) {
+            return cache;
+        }
+
+        T parsedValue = parse();
+        cache = parsedValue;
+        return parsedValue;
+    }
+
+    public T getIgnoreCache() {
+        return parse();
+    }
+
+    @SuppressWarnings("unchecked")
+    private T parse() {
         try {
             Object jsonObject = JSONMapper.read(PATH_TO_CONFIG).opt(key);
 
@@ -90,10 +107,11 @@ public class Setting<T> {
                 collection.add(jsonArray.get(i));
             }
 
-            return (T) collection;
+            return  (T) collection;
         } catch (JSONException | IOException | IllegalArgumentException | ClassCastException e) {
             LOGGER.error("Error reading: '" + PATH_TO_CONFIG + "' - '" + e.getMessage() +
                     "' Falling back on default value '" + defaultValue + "'");
+            cache = defaultValue;
             return defaultValue;
         }
     }

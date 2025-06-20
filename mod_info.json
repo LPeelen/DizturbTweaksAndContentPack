@@ -6,7 +6,7 @@
   "version": "1.0.0",
   "description": "A collection of tweaks and content additions with the goal to make Starsector more immersive",
   "gameVersion": "0.98a-RC8",
-  "jars": [ "target/dtcp-1.0-SNAPSHOT.jar" ],
+  "jars": [ "jars/dizturbs-tweaks-and-content-pack-0.1.0.jar" ],
   "modPlugin": "dtcp.DTCPModPlugin",
   "dependencies": [
     {

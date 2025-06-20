@@ -28,7 +28,7 @@ class SettingTest {
             mockedJSONUtils.when(() -> JSONMapper.read(Mockito.anyString())).thenReturn(mockJson);
 
             Setting<String> testSetting = new Setting<>("test", "default");
-            Assertions.assertEquals("success", testSetting.get());
+            Assertions.assertEquals("success", testSetting.getIgnoreCache());
         }
     }
 
@@ -38,7 +38,7 @@ class SettingTest {
             mockedJSONUtils.when(() -> JSONMapper.read(Mockito.anyString())).thenReturn(mockJson);
 
             Setting<List<Integer>> testSetting = new Setting<>("testArray", new ArrayList<>(), Integer.class);
-            int[] resultArray = testSetting.get().stream().mapToInt(Integer::intValue).toArray();
+            int[] resultArray = testSetting.getIgnoreCache().stream().mapToInt(Integer::intValue).toArray();
             Assertions.assertArrayEquals(new int[]{1, 2, 3}, resultArray);
         }
     }
@@ -52,7 +52,7 @@ class SettingTest {
             List<Integer> defaultList = Arrays.stream(expectedArray).boxed().toList();
 
             Setting<List<Integer>> testSetting = new Setting<>("mixedArray", defaultList, Integer.class);
-            int[] resultArray = testSetting.get().stream().mapToInt(Integer::intValue).toArray();
+            int[] resultArray = testSetting.getIgnoreCache().stream().mapToInt(Integer::intValue).toArray();
 
             Assertions.assertArrayEquals(expectedArray, resultArray);
         }
@@ -64,7 +64,7 @@ class SettingTest {
             mockedJSONUtils.when(() -> JSONMapper.read(Mockito.anyString())).thenThrow(new IOException("Test IO exception"));
 
             Setting<String> testSetting = new Setting<>("test", "default");
-            Assertions.assertEquals("default", testSetting.get());
+            Assertions.assertEquals("default", testSetting.getIgnoreCache());
         }
     }
 
@@ -74,7 +74,7 @@ class SettingTest {
             mockedJSONUtils.when(() -> JSONMapper.read(Mockito.anyString())).thenThrow(new JSONException("Test JSON exception"));
 
             Setting<String> testSetting = new Setting<>("test", "default");
-            Assertions.assertEquals("default", testSetting.get());
+            Assertions.assertEquals("default", testSetting.getIgnoreCache());
         }
     }
 
@@ -84,7 +84,7 @@ class SettingTest {
             mockedJSONUtils.when(() -> JSONMapper.read(Mockito.anyString())).thenReturn(mockJson);
 
             Setting<String> testSetting = new Setting<>("invalid", "default");
-            Assertions.assertEquals("default", testSetting.get());
+            Assertions.assertEquals("default", testSetting.getIgnoreCache());
         }
     }
 }
