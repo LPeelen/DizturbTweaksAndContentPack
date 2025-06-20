@@ -1,7 +1,6 @@
 package dtcp.campaign.submarkets;
 
 import com.fs.starfarer.api.Global;
-import com.fs.starfarer.api.campaign.CargoAPI;
 import com.fs.starfarer.api.campaign.FleetDataAPI;
 import com.fs.starfarer.api.campaign.econ.SubmarketAPI;
 import com.fs.starfarer.api.combat.ShipHullSpecAPI;
@@ -12,7 +11,6 @@ import org.apache.log4j.Logger;
 
 import java.util.EnumSet;
 import java.util.List;
-import java.util.Objects;
 
 public class NerfedOpenMarket extends OpenMarketPlugin {
 
