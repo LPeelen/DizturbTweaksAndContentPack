@@ -29,7 +29,7 @@ public class NerfedOpenMarket extends OpenMarketPlugin {
         FleetDataAPI shipsForSale = submarket.getCargo().getMothballedShips();
 
         // If the list of keywords is empty for whatever reason then don't do anything.
-        // Otherwise nothing will be sold on the open market.
+        // Otherwise, nothing will be sold on the open market.
         if (LEGAL_HULL_KEYWORDS.get().isEmpty()) {
             return;
         }
