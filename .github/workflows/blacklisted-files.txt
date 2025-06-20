@@ -1,0 +1,10 @@
+.gitignore
+^.github/
+^.run/
+^lib/
+^src/
+.iml$
+banner.png$
+LICENSE$
+README.md$
+pom.xml$

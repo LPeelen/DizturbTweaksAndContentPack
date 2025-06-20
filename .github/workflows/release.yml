@@ -3,7 +3,11 @@ name: Create Release
 on:
   push:
     tags:
-      - 'v*'
+      - '*'
+    branches:
+      - "!*"
+
+  workflow_dispatch:
 
 jobs:
   release:
@@ -12,6 +16,19 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
+      - name: Fetch Tags
+        run: git fetch --prune --unshallow --tags
+
+      - name: Set Variables
+        run: |
+          echo "VERSION=$(git describe --tags)" >> $GITHUB_ENV
+          git log --format=%B -n 1 $(git log -1 --pretty=format:"%h") | cat - > changes.txt
+          if [[ "$(git describe --tags)" =~ .*"dev"|"qa"|"unstable".* ]]; then
+            echo "IS_PRERELEASE=true" >> $GITHUB_ENV;
+          else
+            echo "IS_PRERELEASE=false" >> $GITHUB_ENV;
+          fi
 
       - name: Set up JDK 17
         uses: actions/setup-java@v4
@@ -22,20 +39,20 @@ jobs:
       - name: Build with Maven (no dependencies)
         run: mvn -q clean package -DskipTests
 
-      - name: Prepare release ZIP
+      - name: Create Mod Zip
         run: |
-          mkdir -p release/jars
-          cp target/*.jar release/jars/
-          cp -r data release/
-          cp mod_info.json release/
-          cd release
-          zip -r "../${{ github.event.repository.name }}.zip" *
+          cd ./.github/workflows/
+          chmod +x ./zip.sh
+          sh ./zip.sh "./../../" "DizturbsTweaksAndContentPack" 
 
-      - name: Create GitHub Release
-        uses: softprops/action-gh-release@v2
+      - name: Publish Release on GitHub
+        uses: "ncipollo/release-action@v1.12.0"
         with:
-          tag_name: ${{ github.ref_name }}
-          name: Release ${{ github.ref_name }}
-          files: ${{ github.event.repository.name }}.zip
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          allowUpdates: true
+          name: ${{ env.VERSION }}
+          tag: ${{ env.VERSION }}
+          bodyFile: changelog.txt
+          draft: false
+          prerelease: '${{ env.IS_PRERELEASE }}'
+          token: ${{ secrets.GITHUB_TOKEN }}
+          artifacts: ".github/workflows/artifacts/*"
