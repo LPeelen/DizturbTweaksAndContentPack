@@ -6,14 +6,13 @@
 
     <groupId>dizturb</groupId>
     <artifactId>dizturbs-tweaks-and-content-pack</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>0.1.0</version>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <maven.compiler.release>17</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <starsector.root>${project.basedir}/../../</starsector.root>
     </properties>
 
     <dependencies>
@@ -23,105 +22,126 @@
             <artifactId>commons-compiler</artifactId>
             <version>1.0.0</version>
             <scope>system</scope>
-            <systemPath>${starsector.root}/commons-compiler.jar</systemPath>
+            <systemPath>${project.basedir}/lib/commons-compiler.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>org.codehaus</groupId>
             <artifactId>commons-compiler-jdk</artifactId>
             <version>1.0.0</version>
             <scope>system</scope>
-            <systemPath>${starsector.root}/commons-compiler-jdk.jar</systemPath>
+            <systemPath>${project.basedir}/lib/commons-compiler-jdk.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>com.fs</groupId>
             <artifactId>common_obf</artifactId>
             <version>1.0.0</version>
             <scope>system</scope>
-            <systemPath>${starsector.root}/fs.common_obf.jar</systemPath>
+            <systemPath>${project.basedir}/lib/fs.common_obf.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>com.fs</groupId>
             <artifactId>sound_obf</artifactId>
             <version>1.0.0</version>
             <scope>system</scope>
-            <systemPath>${starsector.root}/fs.sound_obf.jar</systemPath>
+            <systemPath>${project.basedir}/lib/fs.sound_obf.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>org.codehaus</groupId>
             <artifactId>janino</artifactId>
             <version>1.0.0</version>
             <scope>system</scope>
-            <systemPath>${starsector.root}/janino.jar</systemPath>
+            <systemPath>${project.basedir}/lib/janino.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>javax.xml.bind</groupId>
             <artifactId>jaxb-api</artifactId>
             <version>2.4.0</version>
             <scope>system</scope>
-            <systemPath>${starsector.root}/jaxb-api-2.4.0-b180830.0359.jar</systemPath>
+            <systemPath>${project.basedir}/lib/jaxb-api-2.4.0-b180830.0359.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>net.java.jinput</groupId>
             <artifactId>jinput</artifactId>
             <version>1.0.0</version>
             <scope>system</scope>
-            <systemPath>${starsector.root}/jinput.jar</systemPath>
+            <systemPath>${project.basedir}/lib/jinput.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>org.echocat</groupId>
             <artifactId>jogg</artifactId>
             <version>0.0.7</version>
             <scope>system</scope>
-            <systemPath>${starsector.root}/jogg-0.0.7.jar</systemPath>
+            <systemPath>${project.basedir}/lib/jogg-0.0.7.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>com.jcraft.jorbis</groupId>
             <artifactId>jorbis</artifactId>
             <version>0.0.15</version>
             <scope>system</scope>
-            <systemPath>${starsector.root}/jorbis-0.0.15.jar</systemPath>
+            <systemPath>${project.basedir}/lib/jorbis-0.0.15.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
             <version>1.0.0</version>
             <scope>system</scope>
-            <systemPath>${starsector.root}/json.jar</systemPath>
+            <systemPath>${project.basedir}/lib/json.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
             <version>1.2.9</version>
             <scope>system</scope>
-            <systemPath>${starsector.root}/log4j-1.2.9.jar</systemPath>
+            <systemPath>${project.basedir}/lib/log4j-1.2.9.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>org.lwjgl</groupId>
             <artifactId>lwjgl</artifactId>
             <version>1.0.0</version>
             <scope>system</scope>
-            <systemPath>${starsector.root}/lwjgl.jar</systemPath>
+            <systemPath>${project.basedir}/lib/lwjgl.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>org.lwjgl.lwjgl</groupId>
             <artifactId>lwjgl_util</artifactId>
             <version>1.0.0</version>
             <scope>system</scope>
-            <systemPath>${starsector.root}/lwjgl_util.jar</systemPath>
+            <systemPath>${project.basedir}/lib/lwjgl_util.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>com.fs</groupId>
             <artifactId>starsfarer.api</artifactId>
             <version>0.98a</version>
             <scope>system</scope>
-            <systemPath>${starsector.root}/starfarer.api.jar</systemPath>
+            <systemPath>${project.basedir}/lib/starfarer.api.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>com.fs</groupId>
             <artifactId>starsfarer_obf</artifactId>
             <version>0.98a</version>
             <scope>system</scope>
-            <systemPath>${starsector.root}/starfarer_obf.jar</systemPath>
+            <systemPath>${project.basedir}/lib/starfarer_obf.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jaxb</groupId>
+            <artifactId>txw2</artifactId>
+            <version>3.0.2</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/txw2-3.0.2.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>org.sejda.imageio</groupId>
+            <artifactId>webp-imageio</artifactId>
+            <version>0.1.6</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/webp-imageio-0.1.6.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.thoughtworks.xstream</groupId>
+            <artifactId>xstream</artifactId>
+            <version>1.4.10</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/xstream-1.4.10.jar</systemPath>
         </dependency>
         <!-- Community dependencies -->
         <dependency>
@@ -129,14 +149,14 @@
             <artifactId>LazyLib</artifactId>
             <version>3.0.0</version>
             <scope>system</scope>
-            <systemPath>${starsector.root}/mods/LazyLib/jars/LazyLib.jar</systemPath>
+            <systemPath>${project.basedir}/lib/LazyLib.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>lukas04</groupId>
             <artifactId>LunaLib</artifactId>
             <version>2.0.4</version>
             <scope>system</scope>
-            <systemPath>${starsector.root}/mods/LunaLib/jars/LunaLib.jar</systemPath>
+            <systemPath>${project.basedir}/lib/LunaLib.jar</systemPath>
         </dependency>
         <!-- Testing dependencies -->
         <dependency>
@@ -174,6 +194,9 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>3.4.2</version>
+                <configuration>
+                    <outputDirectory>${project.basedir}/jars</outputDirectory>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -190,7 +213,7 @@
                     <toolchains>
                         <jdk>
                             <version>17</version>
-                            <vendor>azul</vendor>
+                            <vendor>zulu</vendor>
                         </jdk>
                     </toolchains>
                 </configuration>
